@@ -26,6 +26,7 @@ sudo sed -i '16s/.*/export APACHE_RUN_USER=vagrant/' /etc/apache2/envvars
 sudo sed -i '17s/.*/export APACHE_RUN_GROUP=vagrant/' /etc/apache2/envvars
 sudo sed -i '/DocumentRoot .*/ s/$/\/publicnb/' /etc/apache2/sites-available/000-default.conf 
 sudo sed -i '12s/nb/\n\t\<Directory \/var\/www\/html\>\n\t\tOptions Indexes FollowSymLinks MultiViews\n\t\tAllowOverride All\n\t\tRequire all granted\n\t\<\/Directory\>/' /etc/apache2/sites-available/000-default.conf
+sudo sed -i '221s/$/\n\<ifModule mod_rewrite.c\>\nRewriteEngine On\n\<\/ifModule\>/' /etc/apache2/apache2.conf 
 sudo service apache2 restart" > ./scripts/auto-install.sh;
 echo "
 cd /var/www/
